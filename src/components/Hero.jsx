@@ -1,24 +1,63 @@
 import { useState, useEffect } from 'react';
 
 function Hero() {
-  const [taglineText, setTaglineText] = useState('');
-  const fullText = "We Code. We Design. We Deliver.";
+  const [currentWord, setCurrentWord] = useState('');
+  const words = ["Code", "Design", "Deliver"];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let index = 0;
-    const typeWriter = () => {
-      if (index < fullText.length) {
-        setTaglineText(fullText.slice(0, index + 1));
-        index++;
-        setTimeout(typeWriter, 100);
+    const animateWord = () => {
+      const targetWord = words[currentWordIndex];
+      
+      if (!isDeleting) {
+        // Typing forward
+        let index = 0;
+        setIsTyping(true);
+        
+        const typeWriter = () => {
+          if (index < targetWord.length) {
+            setCurrentWord(targetWord.slice(0, index + 1));
+            index++;
+            setTimeout(typeWriter, 100);
+          } else {
+            setIsTyping(false);
+            // Wait before starting to delete
+            setTimeout(() => {
+              setIsDeleting(true);
+            }, 2000);
+          }
+        };
+        
+        typeWriter();
+      } else {
+        // Backspacing
+        let index = currentWord.length;
+        setIsTyping(true);
+        
+        const backspace = () => {
+          if (index > 0) {
+            setCurrentWord(targetWord.slice(0, index - 1));
+            index--;
+            setTimeout(backspace, 50); // Faster backspace
+          } else {
+            setIsTyping(false);
+            setIsDeleting(false);
+            // Move to next word
+            setTimeout(() => {
+              setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+            }, 500);
+          }
+        };
+        
+        backspace();
       }
     };
 
-    // Start typing animation after component mounts
-    const timer = setTimeout(typeWriter, 1000);
-    
+    const timer = setTimeout(animateWord, 1000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [currentWordIndex, isDeleting]);
 
   const handleCTAClick = () => {
     document.querySelector("#contact")?.scrollIntoView({
@@ -36,8 +75,12 @@ function Hero() {
           <span className="text-white">Fore</span>
           <span className="text-cyan-400">Kode</span>
         </h1>
-        <p className="text-2xl md:text-3xl mb-8 typing-animation">
-          {taglineText}
+        <p className="text-2xl md:text-3xl mb-8 relative flex justify-center items-center">
+          <span className="absolute left-1/2 transform -translate-x-1/2 -translate-x-16">We</span>
+          <span className="min-w-[120px] text-left ml-8">
+            {currentWord}<span className={`typing-animation ${isTyping ? '' : 'cursor-blink'}`}></span>
+          </span>
+          <span className="ml-1">.</span>
         </p>
         <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
           A student-led tech agency crafting innovative digital solutions with
