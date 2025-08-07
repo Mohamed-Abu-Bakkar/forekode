@@ -75,10 +75,11 @@ function Hero() {
           <span className="text-white">Fore</span>
           <span className="text-cyan-400">Kode</span>
         </h1>
-        <p className="text-2xl md:text-3xl mb-8 relative flex justify-center items-center">
-          <span className="absolute left-1/2 transform -translate-x-1/2 -translate-x-16">We</span>
-          <span className="min-w-[120px] text-left ml-8">
-            {currentWord}<span className={`typing-animation ${isTyping ? '' : 'cursor-blink'}`}></span>
+        <p className="text-2xl md:text-3xl mb-8 flex justify-center items-center">
+          <span className="w-16 mr-4 text-right">We</span>
+          <span className="min-w-[120px] text-left">
+            {currentWord}
+            <span className={`typing-animation ${isTyping ? '' : 'cursor-blink'}`}></span>
           </span>
           <span className="ml-1">.</span>
         </p>
