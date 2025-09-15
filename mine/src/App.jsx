@@ -1,6 +1,6 @@
 import Home from './components/Home.jsx'
-import Projects from './components/projects.jsx'
-import Services from './components/services.jsx'
+import Projects from './components/Projects.jsx'
+import Services from './components/Services.jsx'
 import Contact from './components/Contact.jsx' // Add this import
 
 export default function App() {
