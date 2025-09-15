@@ -6,22 +6,22 @@ const services = [
   {
     name: "Web Design",
     desc: "Beautiful, responsive designs for every device.",
-    img: "https://images.unsplash.com/photo-1465101178521-c1a4c8a0f8f5?auto=format&fit=crop&w=600&q=80",
+    img: "/QBix.png",
   },
   {
     name: "Web Development",
     desc: "Robust, scalable web applications.",
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+    img: "https://midriffinfosolution.org/wp-content/uploads/2022/03/web-development.jpg",
   },
   {
     name: "UI/UX Design",
     desc: "Intuitive interfaces and delightful experiences.",
-    img: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
+    img: "https://media.licdn.com/dms/image/v2/C4E12AQHID-qLpkBDrg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1611161988142?e=2147483647&v=beta&t=jGTIQuKRZY_0HUA-abT9nwvyAopCtLA_Q-TvTmOlT9c",
   },
   {
     name: "Digital Marketing",
     desc: "Grow your brand with smart digital strategies.",
-    img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+    img: "https://www.theirmindia.org/blog/wp-content/uploads/2021/03/Top-7-Risks-associated-with-Digital-Marketing-1200x900.jpg",
   },
   {
     name: "Custom Tech Solutions",

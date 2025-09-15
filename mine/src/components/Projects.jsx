@@ -7,8 +7,8 @@ const projects = [
   {
     // Project 1: QBix Website
     title: "QBix Website",
-    desc: "A modern, responsive website for QBix agency .",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+    desc: "A modern, responsive website.",
+    img: "/QBix.png",
     tech: ["React", "Framer Motion", "TailwindCSS", "Vercel"],
   },
   {
