@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import Background from "./Background";
 
 export default function Home() {
@@ -34,57 +35,52 @@ export default function Home() {
         style={{ fontSize: "clamp(2rem, 5vw, 3rem)", textAlign: "center" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        initial={false}
         animate={{
-          scale: hovered ? 1.15 : 1,
-          opacity: hovered ? 0.8 : 1,
-          letterSpacing: hovered ? "0.1em" : "normal",
+          scale: hovered ? 1.05 : 1,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        transition={{ duration: 0.2 }}
       >
-        <AnimatePresence mode="wait">
+        {hovered ? (
           <motion.span
-            key={hovered ? "welcome" : "innovate"}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
           >
-            {hovered ? (
-              <>Innovate. Create. Elevate.</>
-            ) : (
-              <>
-                <span>Welcome to </span>
-
-                <span className="text-cyan-400 font-extrabold text-3xl md:text-5xl">
-                  QBix
-                </span>
-              </>
-            )}
+            Innovate. Create. Elevate.
           </motion.span>
-        </AnimatePresence>
+        ) : (
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span>Welcome to </span>
+            <span className="text-cyan-400 font-extrabold text-3xl md:text-5xl">
+              QBix
+            </span>
+          </motion.span>
+        )}
       </motion.div>
 
-      {/* Custom animated cursor (bigger diameter) */}
+      {/* Custom animated cursor (circle forms on hover) */}
       <AnimatePresence>
         {hovered && (
           <motion.div
             className="fixed pointer-events-none z-20"
             style={{
-              left: cursor.x - 80,
-              top: cursor.y - 80,
-              width: 160,
-              height: 160,
+              left: cursor.x - 60,
+              top: cursor.y - 60,
+              width: 120,
+              height: 120,
               borderRadius: "50%",
-              border: "3px solid white",
-              background: "white",
-              mixBlendMode: "difference",
-              boxShadow: "0 0 64px 16px rgba(255,255,255,0.15)",
+              border: "2px solid rgba(34, 211, 238, 0.6)",
+              background: "radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, transparent 70%)",
+              boxShadow: "0 0 40px rgba(34, 211, 238, 0.3)",
             }}
-            initial={{ scale: 0.5, opacity: 0 }}
+            initial={{ scale: 0.3, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.5, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            exit={{ scale: 0.3, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           />
         )}
       </AnimatePresence>
@@ -93,11 +89,17 @@ export default function Home() {
       <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
         <button
           onClick={scrollDown}
-          className="animate-bounce text-white text-sm md:text-lg bg-black/40 px-4 py-2 rounded-full shadow-lg hover:bg-white hover:text-black transition"
+          className="text-white text-sm md:text-lg bg-black/40 px-4 py-2 rounded-full shadow-lg hover:bg-white hover:text-black transition-colors duration-200"
         >
           Scroll Down
         </button>
-        <div className="mt-2 w-6 h-6 border-b-2 border-white border-r-2 rotate-45" />
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="mt-2"
+        >
+          <ChevronDown className="w-6 h-6 text-white" />
+        </motion.div>
       </div>
     </Background>
   );

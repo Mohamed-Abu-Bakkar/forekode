@@ -1,3 +1,4 @@
 /* Hide scrollbar utility for Tailwind */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: thin; }
+/* add background color */

@@ -1,23 +1,29 @@
-import Home from './components/Home.jsx'
-import Projects from './components/Projects.jsx'
-import Services from './components/Services.jsx'
-import Contact from './components/Contact.jsx' // Add this import
+import Home from "./components/Home.jsx";
+import Projects from "./components/Projects.jsx";
+import Services from "./components/Services.jsx";
+import Contact from "./components/Contact.jsx"; // Add this import
+import About from "./components/About.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 export default function App() {
   return (
-    <div className="w-full h-screen overflow-y-scroll snap-y snap-mandatory" style={{scrollSnapType: 'y mandatory'}}>
-      <section className="snap-start h-screen w-full">
+    <div className="w-full min-h-screen snap-y snap-mandatory scroll-smooth">
+      <Navbar />
+      <section id="home" className="snap-start h-screen w-full">
         <Home />
       </section>
-      <section className="snap-start h-screen w-full">
+      <section id="projects" className="snap-start minh-screen w-full">
         <Projects />
       </section>
-      <section className="snap-start h-screen w-full">
+      <section id="services" className="snap-start h-screen w-full">
         <Services />
       </section>
-      <section className="snap-start h-screen w-full">
+      <section id="contact" className="snap-start h-screen w-full">
         <Contact />
       </section>
+      <section id="about" className="snap-start min-h-screen w-full">
+        <About />
+      </section>
     </div>
-  )
+  );
 }
